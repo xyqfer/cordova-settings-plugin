@@ -41,3 +41,7 @@ exports.switchToWifiSettings = function() {
 exports.switchToWirelessSettings = function() {
     cordova.exec(function() {}, function() {}, "LocationAndSettings", "switchToWirelessSettings",[]);
 };
+
+exports.switchToTTSSettings = function() {
+    cordova.exec(function() {}, function() {}, "LocationAndSettings", "switchToTTSSettings",[]);
+};

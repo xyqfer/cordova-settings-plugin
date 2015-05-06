@@ -7,6 +7,7 @@ import org.json.JSONArray;
 
 import android.provider.Settings;
 import android.location.LocationManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
@@ -38,6 +39,16 @@ public class LocationAndSettings extends CordovaPlugin {
             callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, result));
             return true;
         }
+        else if (action.equals("switchToTTSSettings")) {
+                    Intent settingsIntent = new Intent("/");
+                    ComponentName cm = new ComponentName("com.android.settings","com.android.settings.TextToSpeechSettings");
+                    settingsIntent.setComponent(cm);
+                    settingsIntent.setAction("android.intent.action.VIEW");
+                    cordova.getActivity().startActivity(settingsIntent);
+                    boolean result = true;
+                    callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, result));
+                    return true;
+                }
         else if (action.equals("isGpsEnabled")) {
             LocationManager locationManager = (LocationManager) cordova.getActivity().getSystemService(Context.LOCATION_SERVICE);
             boolean result = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
