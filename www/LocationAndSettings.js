@@ -38,8 +38,8 @@ exports.switchToWifiSettings = function() {
     cordova.exec(function() {}, function() {}, "LocationAndSettings", "switchToWifiSettings",[]);
 };
 
-exports.switchToWirelessSettings = function() {
-    cordova.exec(function() {}, function() {}, "LocationAndSettings", "switchToWirelessSettings",[]);
+exports.switchToInstallTTS = function() {
+    cordova.exec(function() {}, function() {}, "LocationAndSettings", "switchToInstallTTS",[]);
 };
 
 exports.switchToTTSSettings = function() {
