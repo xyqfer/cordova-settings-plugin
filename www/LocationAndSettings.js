@@ -42,6 +42,10 @@ exports.switchToInstallTTS = function() {
     cordova.exec(function() {}, function() {}, "LocationAndSettings", "switchToInstallTTS",[]);
 };
 
-exports.switchToTTSSettings = function() {
-    cordova.exec(function() {}, function() {}, "LocationAndSettings", "switchToTTSSettings",[]);
+exports.switchToTTSSettings = function(success, error) {
+    cordova.exec(function() {
+        success();
+    }, function() {
+        error();
+    }, "LocationAndSettings", "switchToTTSSettings",[]);
 };
