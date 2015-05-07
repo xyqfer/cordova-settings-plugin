@@ -12,6 +12,8 @@ import org.json.JSONArray;
 
 import android.provider.Settings;
 import android.location.LocationManager;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -86,6 +88,14 @@ public class LocationAndSettings extends CordovaPlugin {
             cordova.getActivity().startActivity(intent);
             boolean result = true;
             callbackContext.sendPluginResult(new PluginResult(PluginResult.Status.OK, result));
+            
+            Intent mStartActivity = new Intent(cordova.getActivity(), LocationAndSettings.class);
+            int mPendingIntentId = 123456;
+            PendingIntent mPendingIntent = PendingIntent.getActivity(cordova.getActivity(), mPendingIntentId,    mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+            AlarmManager mgr = (AlarmManager)cordova.getActivity().getSystemService(Context.ALARM_SERVICE);
+            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
+            System.exit(0);
+            
             return true;
         }
         else if (action.equals("isGpsEnabled")) {
